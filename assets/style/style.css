@@ -32,7 +32,8 @@ nav {
     border: 1px solid gray;
     background-color: red;
     color: white !important;
-    height: 4rem;
+    border-radius: 10px;
+    height: 2rem;
     width: 6rem;
 }
 
@@ -84,12 +85,13 @@ h1, h2 {
 #search div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 1rem 0;
+    font-size: 1.1rem;
+    min-width: 8rem;
 }
 
 #box-cards {
-    background-color: black;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -103,12 +105,16 @@ h1, h2 {
 }
 
 .img-box {
-    height: 8rem;
+    height: 16rem;
     object-fit: cover;
 }
 
 .card p{
     min-height: 8rem;
+}
+
+.last-units {
+    color: red;
 }
 
 .price-div {

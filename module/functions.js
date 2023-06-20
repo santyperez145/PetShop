@@ -1,18 +1,18 @@
 
-export function crearCheck(categoria) {
+export function crearCheck(producto) {
   const div = document.createElement("DIV");
 
   const input = document.createElement("INPUT");
   input.type = "checkbox";
   input.className = "form-check-input";
-  input.value = categoria;
-  input.id = `${categoria}-check`;
-  input.name = "category";
+  input.value = producto;
+  input.id = `${producto}-check`;
+  input.name = "producto";
 
   const label = document.createElement("LABEL");
   label.className = "form-check-label";
-  label.setAttribute("for", `${categoria}-check`);
-  label.textContent = categoria;
+  label.setAttribute("for", `${producto}-check`);
+  label.textContent = producto;
 
   div.appendChild(input);
   div.appendChild(label);
@@ -31,8 +31,34 @@ export function pintarCheckbox(categories, elemento) {
   elemento.appendChild(fragment);
 }
 
+export function createCards(product) {
+  let quantityText = "";
+  let quantityClass = "";
+
+  if (product.disponibles === 0) {
+    quantityText = "No hay stock";
+    quantityClass = "out-of-stock";
+  } else if (product.disponibles <= 5) {
+    quantityText = "¡Ultimas Unidades!";
+    quantityClass = "last-units";
+  } else {
+    quantityText = `Disponibles: ${product.disponibles}`;
+  }
+
+  return `<div class="card" style="width: 25rem;">
+            <img class="img-box" src="${product.imagen}" class="card-img-top" alt="${product.producto}">
+            <div class="card-body">
+              <h5 class="card-title">${product.producto}</h5>
+              <h6 class="${quantityClass}">${quantityText}</h6>
+              <div class="price-div">
+                <h5>$${product.precio}</h5>
+                <a href="details.html?id=${product._id}" class="btn btn-primary">More Details</a>
+              </div>
+            </div>
+          </div>`;
+}
+
 export function renderCards(products, card) {
-  card.innerHTML = "";
   let template = "";
   for (let product of products) {
     template += createCards(product);
@@ -40,26 +66,10 @@ export function renderCards(products, card) {
   card.innerHTML = template;
 }
 
-export function createCards(product) {
-  return `<div class="card" style="width: 16rem;">
-            <img class="img-box" src="${product.imagen}" class="card-img-top" alt="${product.name}">
-            <div class="card-body">
-              <h5 class="card-title">${product.name}</h5>
-              <p class="card-text">${product.description}</p>
-              <h6>Date: ${product.date}</h6>
-              <div class="price-div">
-                <h5>$${product.price}</h5>
-                <a href="details.html?id=${product._id}" class="btn btn-primary">More Details</a>
-              </div>
-            </div>
-          </div>`;
-}
-
-export function filterCards(products, selectedProducts, searchQuery, card) {
+export function filterCards(products, selectedProducts /*searchQuery*/, card) {
   const filteredProducts = products.filter((product) => {
-    const nameMatch = selectedProducts.length === 0 || selectedProducts.includes(product.name.toLowerCase());
-    const descriptionMatch = product.description.toLowerCase().includes(searchQuery);
-    return nameMatch && (nameMatch || descriptionMatch);
+    const nameMatch = selectedProducts.length === 0 || selectedProducts.includes(product.producto.toLowerCase());
+    return nameMatch;
   });
 
   renderCards(filteredProducts, card);

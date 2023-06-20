@@ -4,14 +4,14 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
   .then((response) => response.json())
   .then((data) => {
     let card = document.getElementById("box-cards");
-    let productsFarmacia = data.filter((event) =>
-      event.categoria.includes("farmacia")
+    let productsjugueteria = data.filter((event) =>
+      event.categoria.includes("jugueteria")
     );
-    renderCards(productsFarmacia, card)
+    renderCards(productsjugueteria, card)
 
     // Obtener los productos únicos
     const products = Array.from(new Set(data
-      .filter((product) => product.categoria.includes("farmacia"))
+      .filter((product) => product.categoria.includes("jugueteria"))
       .map((product) => product.producto)));
 
     // Carga de checkboxes y productos
@@ -33,13 +33,13 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
           }
         });
         /*const searchInput = document.getElementById("search-input").value.toLowerCase().trim();*/
-        filterCards(productsFarmacia, selectedProducts /* searchInput */, card);
+        filterCards(productsjugueteria, selectedProducts /* searchInput */, card);
       });
     });
 
     /*searchInput.addEventListener("keyup", () => {
       const searchQuery = searchInput.value.toLowerCase().trim();
-      filterCards(productsFarmacia, selectedProducts, searchQuery, card);
+      filterCards(productsjugueteria, selectedProducts, searchQuery, card);
     });*/
   })
   .catch((error) => console.error(error));
