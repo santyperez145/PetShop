@@ -52,7 +52,7 @@ export function createCards(product) {
               <h6 class="${quantityClass}">${quantityText}</h6>
               <div class="price-div">
                 <h5>$${product.precio}</h5>
-                <a href="details.html?id=${product._id}" class="btn btn-primary">More Details</a>
+                <a href="details.html?id=${product._id}" class="btn btn-primary">Mas Detalles</a>
               </div>
             </div>
           </div>`;
@@ -94,11 +94,146 @@ export function agregarCategoriaDos (array){
       console.log(producto)
       productos.push(producto)
     }else{
-      producto.categoria2 = "ambos"
+      producto.categoria2 = "Ambos"
       console.log(producto)
       productos.push(producto)
     }
   }
   return productos
 }
+
+
+//details
+
+// Funcion para renderizar los detalles
+
+export function renderDetails(object, card){
+  let quantityText = "";
+  let quantityClass = "";
+
+  if (object.disponibles === 0) {
+    quantityText = "No hay stock";
+    quantityClass = "out-of-stock";
+  } else if (object.disponibles <= 5) {
+    quantityText = "¡Ultimas Unidades!";
+    quantityClass = "last-units";
+  } else {
+    quantityText = `Disponibles: ${object.disponibles}`;
+  }
+  
+  card.innerHTML = `
+    <div class="details-card" style="width: 30rem;">
+      <img src="${object.imagen}" class="card-img-top" alt="${object.producto}">
+      <div class="details-body">
+        <h5 class="details-title">${object.producto}</h5>
+        <h6>Categoria: ${object.categoria}</h6>
+        <h6 class="${quantityClass}">Cantidad: ${quantityText}</h6>
+        <div class="details-pricediv">
+          <h5 class="details-price">Precio: $${object.precio}</h5>
+          <button id="add-to-cart-button" data-product-id="${object._id}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <h2 class="h2-description"> Descripcion</h2>
+    <p class="details-text">${object.descripcion}</p>
+  `;
+}
+
+
+// Objeto para almacenar los productos en el carrito
+const cart = {};
+
+// Función para agregar un producto al carrito
+export function addToCart(productId) {
+  const product = products.find((item) => item._id === productId);
+  
+  if (!product) {
+    console.log("Producto no encontrado");
+    return;
+  }
+  
+  if (product.disponibles === 0) {
+    console.log("No hay stock disponible");
+    return;
+  }
+  
+  if (cart[productId]) {
+    // Ya existe el producto en el carrito, incrementar la cantidad
+    if (cart[productId] >= product.disponibles) {
+      console.log("No se puede agregar más unidades. Stock máximo alcanzado");
+      return;
+    }
+    
+    cart[productId]++;
+  } else {
+    // Producto no existe en el carrito, agregarlo
+    cart[productId] = 1;
+  }
+  
+  updateCartUI();
+}
+
+// Función para eliminar un producto del carrito
+export function removeFromCart(productId) {
+  if (!cart[productId]) {
+    console.log("Producto no encontrado en el carrito");
+    return;
+  }
+  
+  delete cart[productId];
+  
+  updateCartUI();
+}
+
+// Función para restar una unidad de un producto en el carrito
+export function decreaseQuantity(productId) {
+  if (!cart[productId]) {
+    console.log("Producto no encontrado en el carrito");
+    return;
+  }
+  
+  if (cart[productId] === 1) {
+    // Última unidad del producto, eliminarlo del carrito
+    delete cart[productId];
+  } else {
+    // Restar una unidad
+    cart[productId]--;
+  }
+  
+  updateCartUI();
+}
+
+// Función para actualizar la interfaz de usuario del carrito
+export function updateCartUI() {
+  const cartItemCount = document.getElementById("cart-item-count");
+  const cartTotalPrice = document.getElementById("cart-total-price");
+  
+  let itemCount = 0;
+  let totalPrice = 0;
+  
+  for (const productId in cart) {
+    const product = products.find((item) => item._id === productId);
+    const quantity = cart[productId];
+    
+    if (product && quantity) {
+      itemCount += quantity;
+      totalPrice += product.precio * quantity;
+    }
+  }
+  
+  cartItemCount.textContent = itemCount;
+  cartTotalPrice.textContent = totalPrice.toFixed(2);
+}
+
+// Evento click para agregar un producto al carrito
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#add-to-cart-button")) {
+    const productId = event.target.getAttribute("data-product-id");
+    addToCart(productId);
+  }
+});
 
