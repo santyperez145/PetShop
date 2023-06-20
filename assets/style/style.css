@@ -91,6 +91,20 @@ h1, h2 {
     min-width: 8rem;
 }
 
+#search input[type="checkbox"]{
+    display: none;
+}
+
+#search label {
+    background: #909090;
+    display: block;
+    cursor: pointer;
+}
+
+#search input[type=checkbox]:checked + label{
+    background-color: blue;
+}
+
 #box-cards {
     display: flex;
     flex-wrap: wrap;

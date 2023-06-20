@@ -45,7 +45,7 @@ export function createCards(product) {
     quantityText = `Disponibles: ${product.disponibles}`;
   }
 
-  return `<div class="card" style="width: 25rem;">
+  return `<div class="card" style="width: 20rem;">
             <img class="img-box" src="${product.imagen}" class="card-img-top" alt="${product.producto}">
             <div class="card-body">
               <h5 class="card-title">${product.producto}</h5>
@@ -68,7 +68,7 @@ export function renderCards(products, card) {
 
 export function filterCards(products, selectedProducts /*searchQuery*/, card) {
   const filteredProducts = products.filter((product) => {
-    const nameMatch = selectedProducts.length === 0 || selectedProducts.includes(product.producto.toLowerCase());
+    const nameMatch = selectedProducts.length === 0 || selectedProducts.includes(product.categoria2.toLowerCase());
     return nameMatch;
   });
 
@@ -80,5 +80,25 @@ export function filterCards(products, selectedProducts /*searchQuery*/, card) {
   } else {
     noResultsMessage.style.display = "none";
   }
+}
+
+export function agregarCategoriaDos (array){
+  let productos = []
+  for( let producto of array ){
+    if (producto.producto.toLowerCase().includes("perro") || producto.descripcion.toLowerCase().includes("perro")){
+      producto.categoria2 = "Productos para perros"
+      console.log(producto)
+      productos.push(producto)
+    }else if ((producto.producto.toLowerCase().includes("gato") || producto.descripcion.toLowerCase().includes("gato"))){
+      producto.categoria2 = "Productos para gatos"
+      console.log(producto)
+      productos.push(producto)
+    }else{
+      producto.categoria2 = "ambos"
+      console.log(producto)
+      productos.push(producto)
+    }
+  }
+  return productos
 }
 

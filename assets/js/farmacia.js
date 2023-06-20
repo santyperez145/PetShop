@@ -1,4 +1,4 @@
-import { renderCards, filterCards, pintarCheckbox } from "../../module/functions.js";
+import { renderCards, filterCards, pintarCheckbox, agregarCategoriaDos } from "../../module/functions.js";
 
 fetch("https://mindhub-xj03.onrender.com/api/petshop")
   .then((response) => response.json())
@@ -9,10 +9,12 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
     );
     renderCards(productsFarmacia, card)
 
+    agregarCategoriaDos(productsFarmacia)
+
     // Obtener los productos únicos
     const products = Array.from(new Set(data
       .filter((product) => product.categoria.includes("farmacia"))
-      .map((product) => product.producto)));
+      .map((product) => product.categoria2)));
 
     // Carga de checkboxes y productos
     const checkboxesdiv = document.getElementById("search");
