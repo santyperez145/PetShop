@@ -43,5 +43,24 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
       const searchQuery = searchInput.value.toLowerCase().trim();
       filterCards(productsFarmacia, selectedProducts, searchQuery, card);
     });*/
+
+
+    //carro de compras
+
+    let comprado = []
+    
+    const functionComprar = (event)=> {
+      if (event.target.localName === "button"){
+        let agregado = productsFarmacia.find(producto => producto._id == event.target.dataset._id)
+         comprado.push(agregado)
+         console.log(comprado)
+      }
+      localStorage.setItem("compradoFarmacia", JSON.stringify(comprado))
+    }
+
+    let compra = JSON.parse(localStorage.getItem("compradoFarmacia"))
+    console.log(compra)
+
+    card.addEventListener("click", functionComprar)
   })
   .catch((error) => console.error(error));

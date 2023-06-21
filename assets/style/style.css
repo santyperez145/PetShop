@@ -28,6 +28,7 @@ header{
 main{
    min-height:100vh;
    width: 100%;
+   text-align: center;
 }
 
 #petLogo{
@@ -65,7 +66,7 @@ h1{
 }
 
 #carrusel{
-    width: auto;
+    width: 99%;
 }
 
 #product-des{
@@ -177,6 +178,10 @@ h2 {
     color: red;
 }
 
+.btn {
+    background-color: #57be8e;
+}
+
 .price-div {
     display: flex;
     flex-wrap: wrap;
@@ -187,6 +192,7 @@ h2 {
 /*details*/
 
 #details-div {
+    background-color: rgba(128, 128, 128, 0.644);
     margin-top: 5rem;
     height: auto;
     width: 100%;
@@ -208,6 +214,7 @@ h2 {
 }
 
 .details-card img{
+    margin-top: 2rem;
     height: 30rem;
     width: 30rem;
 }
@@ -251,13 +258,7 @@ h2 {
 
 /*contacto*/
 
-.contacto-main{
-   display: flex;
-   flex-direction: column;
-}
-
-.contact-section {
-    width: 100%;
+section {
     display: flex;
     justify-content: space-evenly;
 }
@@ -270,7 +271,7 @@ h2 {
     border: 2px solid rgb(255, 174, 0);
     border-radius: 10px;
     height: 80vh;
-    width: 40% !important;
+    width: 40%;
     background-color: rgb(240, 216, 6);
 }
 .div-h5 {
@@ -285,17 +286,17 @@ h2 {
 }
 iframe {
     display: flex;
-    height: 15rem;
-    width: 22rem;
+    height: 30rem;
+    width: 30rem;
 }
-.contact-section form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     border-radius: 10px;
     height: 80vh;
-    width: 40% !important;;
+    width: 40%;
     margin-top: 1rem;
     border: 2px solid rgb(255, 174, 0);
     border-radius: 10px;
@@ -303,10 +304,6 @@ iframe {
 }
 a {
     text-decoration: none;
-}
-
-.contact-section form input {
-    width: 40% !important;
 }
 
 /*footer*/
@@ -319,6 +316,11 @@ footer{
 }
 
 @media only screen and (min-width:320px) and (max-width:660px) {
+
+    main{
+        margin-top: 5rem;
+    }
+
     h1{
         font-size: 2rem !important;
     }
