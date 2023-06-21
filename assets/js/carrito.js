@@ -72,6 +72,15 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
         }
       }
       shoppingCart.innerHTML += `<p>Total: $${isNaN(total) ? "0.00" : total.toFixed(2)}</p>`;
+      
+      const realizarCompraButton = document.createElement("button");
+      realizarCompraButton.textContent = "Realizar Compra";
+      realizarCompraButton.addEventListener("click", () => {
+        // Redirigir al sandbox de MercadoPago
+        window.location.href = "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=YOUR_PREFERENCE_ID";
+      });
+
+      shoppingCart.appendChild(realizarCompraButton);
     };
 
     document.getElementById("shopping-cart").addEventListener("click", removeFromCart);

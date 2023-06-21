@@ -98,7 +98,7 @@ h1{
   }
   #nav-principal{
     display: flex !important;
-    background-color: white !important;
+    background-color: rgb(42, 40, 40) !important;
   }
 
   /*farmacia y jugueteria*/
@@ -307,6 +307,12 @@ form {
 }
 a {
     text-decoration: none;
+}
+
+/*carro*/
+
+button {
+    background-color: #57be8e;
 }
 
 
