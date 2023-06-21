@@ -11,7 +11,7 @@ header{
     justify-content: center;
     justify-content: space-around;
     height: 18vh;
-    width: 100%;
+    width: auto;
     background-size: cover;
 }
 
@@ -98,7 +98,12 @@ h1{
   }
   #nav-principal{
     display: flex !important;
-    background-color: rgb(42, 40, 40) !important;
+    background-color: rgba(255, 255, 255, 0.535) !important;
+  }
+
+  hr{
+    color: black !important;
+    height: 100px;
   }
 
   /*farmacia y jugueteria*/
@@ -113,7 +118,6 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 98%;
-    margin: 1rem 0;
 }
 #search {
     display: flex;
@@ -256,64 +260,74 @@ h2 {
     color: black;
 }
 
-/*contacto*/
+/* CONTACTO */
 
-section {
-    display: flex;
-    justify-content: space-evenly;
+.main-contact{
+    background-color: #e6e6e6;
 }
-.div-map {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-content: space-evenly;
-    border: 2px solid #57be8e;
-    border-radius: 10px;
-    height: 80vh;
-    width: 40%;
-    background-color: #57be8e;
+
+form{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
+    border-radius: 15px !important;
+    margin-top: 2rem !important;
+    margin-left: 5rem !important;
+    margin-right: 5rem !important;
+    width: 60rem !important;
+    min-height: 35rem !important;
+    background-color: white;
 }
-.div-h5 {
+.form2{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
+    border-radius: 15px !important;
+    margin-top: 1rem !important;
+    margin-left: 5rem;
+    margin-right: 5rem !important;
+    margin-bottom: 2rem !important;
+    width: 60rem;;
+    min-height:25rem !important;
+    background-color: white;
+}
+.mb-3{
+margin-left: 2rem;
+margin-right: 2rem;
+margin-top: 2rem;
+}
+.btn{
     margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
 }
-.div-h5 a {
-    text-decoration: none;
-}
-iframe {
-    margin-top: 2rem;
-    display: flex;
-    height: 30rem;
-    width: 30rem;
-}
-form {
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-    height: 80vh;
-    width: 40%;
-    margin-top: 1rem;
-    border: 2px solid #57be8e;
-    border-radius: 10px;
-    background-color: #57be8e;
-}
-a {
-    text-decoration: none;
+#mensaje{
+    margin-left: 2rem;
+    margin-top: 2rem !important;
 }
 
 /*carro*/
-
-button {
+.cart-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* Ajusta la altura del contenedor al 100% del viewport */
+    text-align: center;
+  }
+  
+  .cart-main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem; /* Ajusta el margen superior según sea necesario */
+  }
+  
+  .cart-main input {
+    margin: 1rem 0;
+    width: 90%; /* Cambia min-width a width para ocupar más espacio horizontalmente */
+    max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
+  }
+  
+  .cart-main button {
     background-color: #57be8e;
-}
+  }
+  
+  
 
 
 /*footer*/
@@ -321,7 +335,7 @@ button {
 footer{
     display: flex;
     height:auto;
-    width: 100vw !important;
+    width: auto !important;
     background-color: #57be8e !important;
 }
 
@@ -341,7 +355,7 @@ footer{
         
         }
     #carrusel{
-        margin-top: 12rem;
+        margin-top: 0rem;
     }
     .container-fluid{
         display: flex !important;

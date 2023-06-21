@@ -58,13 +58,15 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
           const existingCartProduct = document.querySelector(`[data-_id="${producto._id}"]`);
           if (existingCartProduct) {
             const quantityElement = existingCartProduct.querySelector(".quantity");
-            quantityElement.textContent = producto.cantidad;
+            if (quantityElement) {
+              quantityElement.textContent = producto.cantidad;
+            }
           } else {
             const cartProduct = document.createElement("div");
             cartProduct.innerHTML = `
               <p>${producto.producto} - Precio: $${producto.precio} - Disponibles: ${productInAPI.disponibles} - Cantidad agregada: <span class="quantity">${producto.cantidad}</span></p>
-              <button class="remove-from-cart" data-_id="${producto._id}">Eliminar</button>
-              <button class="increase-quantity" data-_id="${producto._id}">Añadir cantidad</button>
+              <button class="btn btn primary remove-from-cart" data-_id="${producto._id}">Eliminar</button>
+              <button class="btn btn primary increase-quantity" data-_id="${producto._id}">Añadir cantidad</button>
             `;
             shoppingCart.appendChild(cartProduct);
           }
@@ -72,15 +74,20 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
         }
       }
       shoppingCart.innerHTML += `<p>Total: $${isNaN(total) ? "0.00" : total.toFixed(2)}</p>`;
-      
+    
       const realizarCompraButton = document.createElement("button");
-      realizarCompraButton.textContent = "Realizar Compra";
-      realizarCompraButton.addEventListener("click", () => {
-        // Redirigir al sandbox de MercadoPago
-        window.location.href = "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=YOUR_PREFERENCE_ID";
-      });
-
+      realizarCompraButton.textContent = "Confirmar Pago";
       shoppingCart.appendChild(realizarCompraButton);
+    
+      const customerForm = document.createElement("form");
+      customerForm.innerHTML = `
+        <h3>Información del Cliente:</h3>
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <input type="text" name="formaPago" placeholder="Forma de Pago" required>
+      `;
+      shoppingCart.insertBefore(customerForm, realizarCompraButton);
     };
 
     document.getElementById("shopping-cart").addEventListener("click", removeFromCart);
