@@ -95,7 +95,7 @@ export function agregarCategoriaDos (array){
       console.log(producto)
       productos.push(producto)
     }else{
-      producto.categoria2 = "Ambos"
+      producto.categoria2 = "Productos para Perros y Gatos"
       console.log(producto)
       productos.push(producto)
     }
@@ -141,96 +141,4 @@ export function renderDetails(object, card){
 }
 
 
-// Objeto para almacenar los productos en el carrito
-const cart = {};
-
-// Función para agregar un producto al carrito
-export function addToCart(productId) {
-  const product = products.find((item) => item._id === productId);
-  
-  if (!product) {
-    console.log("Producto no encontrado");
-    return;
-  }
-  
-  if (product.disponibles === 0) {
-    console.log("No hay stock disponible");
-    return;
-  }
-  
-  if (cart[productId]) {
-    // Ya existe el producto en el carrito, incrementar la cantidad
-    if (cart[productId] >= product.disponibles) {
-      console.log("No se puede agregar más unidades. Stock máximo alcanzado");
-      return;
-    }
-    
-    cart[productId]++;
-  } else {
-    // Producto no existe en el carrito, agregarlo
-    cart[productId] = 1;
-  }
-  
-  updateCartUI();
-}
-
-// Función para eliminar un producto del carrito
-export function removeFromCart(productId) {
-  if (!cart[productId]) {
-    console.log("Producto no encontrado en el carrito");
-    return;
-  }
-  
-  delete cart[productId];
-  
-  updateCartUI();
-}
-
-// Función para restar una unidad de un producto en el carrito
-export function decreaseQuantity(productId) {
-  if (!cart[productId]) {
-    console.log("Producto no encontrado en el carrito");
-    return;
-  }
-  
-  if (cart[productId] === 1) {
-    // Última unidad del producto, eliminarlo del carrito
-    delete cart[productId];
-  } else {
-    // Restar una unidad
-    cart[productId]--;
-  }
-  
-  updateCartUI();
-}
-
-// Función para actualizar la interfaz de usuario del carrito
-export function updateCartUI() {
-  const cartItemCount = document.getElementById("cart-item-count");
-  const cartTotalPrice = document.getElementById("cart-total-price");
-  
-  let itemCount = 0;
-  let totalPrice = 0;
-  
-  for (const productId in cart) {
-    const product = products.find((item) => item._id === productId);
-    const quantity = cart[productId];
-    
-    if (product && quantity) {
-      itemCount += quantity;
-      totalPrice += product.precio * quantity;
-    }
-  }
-  
-  cartItemCount.textContent = itemCount;
-  cartTotalPrice.textContent = totalPrice.toFixed(2);
-}
-
-// Evento click para agregar un producto al carrito
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#add-to-cart-button")) {
-    const productId = event.target.getAttribute("data-product-id");
-    addToCart(productId);
-  }
-});
 

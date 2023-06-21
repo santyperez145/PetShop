@@ -1,5 +1,9 @@
 import { renderCards, filterCards, pintarCheckbox, agregarCategoriaDos } from "../../module/functions.js";
 
+let comprado = JSON.parse(localStorage.getItem("comprado")) || [];
+
+console.log(comprado)
+
 fetch("https://mindhub-xj03.onrender.com/api/petshop")
   .then((response) => response.json())
   .then((data) => {
@@ -49,17 +53,16 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
 
     //carro de compras
 
-    let comprado = []
     
     const functionComprar = (event)=> {
       if (event.target.localName === "button"){
         let agregado = productsjugueteria.find(producto => producto._id == event.target.dataset._id)
          comprado.push(agregado)
       }
-      localStorage.setItem("compradoJugueteria", JSON.stringify(comprado))
+      localStorage.setItem("comprado", JSON.stringify(comprado))
     }
 
-    let compra = JSON.parse(localStorage.getItem("compradoFarmacia"))
+    let compra = JSON.parse(localStorage.getItem("comprado"))
     console.log(compra)
 
     card.addEventListener("click", functionComprar)
