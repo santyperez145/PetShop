@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=DM+Sans&family=Rock+Salt&display=swap');
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+header{
+    transition:all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    height: 18vh;
+    width: 100%;
+    background-size: cover;
+}
+.div-header{
+    display: flex;
+    gap: 12rem;
+    align-items: center;
+}
+#fondo{
+    width: 30rem;
+    margin-left: 16rem;
+}
+main{
+   min-height:100vh;
+   width: 100%;
+}
+footer{
+    display: flex;
+    height:9vh;
+    background-color: #57be8e !important;
+}
+#petLogo{
+    height:5rem;
+}
+#petLogo:hover {
+    -webkit-transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;}
+h1{
+    stroke-dasharray:1x 0.5x 2.5x;
+    color: #BF681B!important;
+    font-size:2.7rem !important;
+    font-family: 'Arvo', serif;
+    font-family: 'Rock Salt', cursive; 
+}
+.nav{
+    display: flex;
+    gap: 1rem;
+    font-family: 'Arvo', serif;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+#menu-hambur{
+    background-color: #BF681B !important;
+}
+#carouselExampleControlsNoTouching{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    background-size: contain;
+}
+.card{
+    height:8rem !important ;
+    font-size: 10px !important;
+}
+.card-img-top{
+    height: 4.5rem !important;
+    width: 4rem !important;
+}
+#product-des{
+    background-color: #57be8e !important;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+.png1 {
+    width: 3rem;
+    height: 3rem;
+  }
+  .png2 {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  #container-png {
+    width: 12rem;
+    margin-left: 3rem;
+  }
+  p{
+    font-family: 'Arvo', serif;
+  }
+  .img-dogcat{
+    width:20rem;
+    height: 13rem;
+  }
+  #quienes{
+    color: #BF681B ;
+  }
+  #nav-principal{
+    display: flex !important;
+    background-color: white !important;
+  }
+  @media only screen and (min-width:320px) and (max-width:660px) {
+    h1{
+        font-size: 2rem !important;
+    }
+    #seccion-final{
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        
+        }
+    #carrusel{
+        margin-top: 12rem;
+    }
+    .container-fluid{
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2rem;
+        justify-content: center !important;
+    };
+  
+    h4{
+        font-size: 0.5rem;
+    }
+    .negrita{
+        font-size: 0.8rem;
+    }
+   #petLogo{
+    height: 4rem !important;
+   }
+   .nav{
+    display: flex !important;
+    gap:0rem !important;
+   }
+.img-dogcat{
+    width: 15rem;
+    height: 9rem;
+}
+#container-png{
+    display: flex !important;
+    width: 100%;
+    justify-content: center !important;
+    justify-content: space-around !important;
+    margin-left: 0rem;
+}
+  }
