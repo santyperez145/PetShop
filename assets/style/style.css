@@ -33,6 +33,7 @@ main{
 
 #petLogo{
     height:5rem;
+    filter: drop-shadow(4px 3px 3px rgb(173, 173, 173) )
 }
 #petLogo:hover {
     -webkit-transform: rotateY(180deg);
@@ -45,6 +46,7 @@ h1{
     font-size:2.7rem !important;
     font-family: 'Arvo', serif;
     font-family: 'Rock Salt', cursive; 
+    filter: drop-shadow(4px 3px 3px rgb(173, 173, 173) )
 }
 .nav{
     display: flex;
@@ -95,15 +97,23 @@ h1{
   }
   #quienes{
     color: #BF681B ;
-  }
-  #nav-principal{
-    display: flex !important;
-    background-color: rgba(255, 255, 255, 0.535) !important;
+    font-size: 1.7rem !important;
   }
 
-  hr{
-    color: black !important;
-    height: 100px;
+  #dondeEstamos{
+    color: #BF681B ;
+    font-size: 1.7rem;
+  }
+
+  #nav-principal{
+    display: flex !important;
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
   }
 
   /*farmacia y jugueteria*/
@@ -117,7 +127,8 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 98%;
+    width: 100%;
+    margin: 0 !important;
 }
 #search {
     display: flex;
@@ -160,6 +171,7 @@ h2 {
     align-items: center;
     justify-content: space-evenly;
     min-height: 54.8vh;
+    background-color: #e6e6e6 !important;
 }
 
 .card {
@@ -195,8 +207,11 @@ h2 {
 
 /*details*/
 
+.main-details{
+    background-color: #e6e6e6;
+}
+
 #details-div {
-    background-color: rgba(128, 128, 128, 0.644);
     margin-top: 5rem;
     height: auto;
     width: 100%;
@@ -209,6 +224,7 @@ h2 {
 
 #details-div .details-card {
     display: flex;
+    flex-wrap: wrap;
     width: 80% !important;
     height: auto;
     font-size: 1.5rem;
@@ -218,20 +234,24 @@ h2 {
 }
 
 .details-card img{
+    flex-wrap: wrap;
     margin-top: 2rem;
     height: 30rem;
     width: 30rem;
 }
 
 .details-title{
+    flex-wrap: wrap;
     font-size: 2.5rem;
 }
 
 .details-body h6{
+    flex-wrap: wrap;
     font-size: 1.3rem;
 }
 
 .details-pricediv{
+    flex-wrap: wrap;
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -239,10 +259,12 @@ h2 {
 }
 
 .details-price{
+    flex-wrap: wrap;
     font-size: 2rem;
 }
 
 .details-cart{
+    flex-wrap: wrap;
     color: blue;
 }
 
@@ -270,8 +292,6 @@ form{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
     border-radius: 15px !important;
     margin-top: 2rem !important;
-    margin-left: 5rem !important;
-    margin-right: 5rem !important;
     width: 60rem !important;
     min-height: 35rem !important;
     background-color: white;
@@ -280,13 +300,17 @@ form{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
     border-radius: 15px !important;
     margin-top: 1rem !important;
-    margin-left: 5rem;
-    margin-right: 5rem !important;
     margin-bottom: 2rem !important;
     width: 60rem;;
     min-height:25rem !important;
     background-color: white;
 }
+
+iframe{
+    width: auto;
+    border-radius: 15px;
+}
+
 .mb-3{
 margin-left: 2rem;
 margin-right: 2rem;
@@ -301,31 +325,50 @@ margin-top: 2rem;
 }
 
 /*carro*/
-.cart-main {
+
+.carrito-main{
+    background-color: #e6e6e6;
+}
+
+.cart {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: auto; /* Ajusta la altura del contenedor al 100% del viewport */
     text-align: center;
+    
   }
   
-  .cart-main form {
+  .cart form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem; /* Ajusta el margen superior según sea necesario */
+    height: auto !important;
   }
   
-  .cart-main input {
+  .cart input {
     margin: 1rem 0;
     width: 90%; /* Cambia min-width a width para ocupar más espacio horizontalmente */
     max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
   }
   
-  .cart-main button {
+  .cart button {
     background-color: #57be8e;
+    color: black;
   }
+
+  .btn-compra{
+    position: relative;
+    bottom: 150px;
+  }
+
+  .carrito-main p{
+    margin: 1rem 0;
+    font-size: 1.4rem;
+}
   
   
 
@@ -334,12 +377,107 @@ margin-top: 2rem;
 
 footer{
     display: flex;
-    height:auto;
+    height:9vh;
     width: auto !important;
     background-color: #57be8e !important;
 }
 
+@media only screen and (min-width:660px) and (max-width:1024) {
+    form {
+      width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  
+    .form2 {
+      width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /*details*/
+
+    .main-details{
+    background-color: #e6e6e6;
+    }
+
+    #details-div {
+        margin-top: 5rem;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #details-div .details-card {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80% !important;
+        height: auto;
+        font-size: 1.5rem;
+        justify-content: center;
+        gap: 0rem;
+        color: black;
+    }
+
+    .details-card img{
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        height: 30rem;
+        width: 30rem;
+    }
+
+    .details-title{
+        flex-wrap: wrap;
+        font-size: 2.5rem;
+    }
+
+    .details-body h6{
+        flex-wrap: wrap;
+        font-size: 1.3rem;
+    }
+
+    .details-pricediv{
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .details-price{
+        flex-wrap: wrap;
+        font-size: 2rem;
+    }
+
+    .details-cart{
+        flex-wrap: wrap;
+        color: blue;
+    }
+
+    .h2-description{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .details-text{
+        width: 80%;
+        font-size: 1.5rem;
+        display: flex;
+        text-align: center;
+        color: black;
+    }
+  }
+
 @media only screen and (min-width:320px) and (max-width:660px) {
+
+
+    .main-index{
+        margin-top: 5rem !important;
+    }
 
     main{
         margin-top: 5rem;
@@ -378,15 +516,103 @@ footer{
     display: flex !important;
     gap:0rem !important;
    }
-.img-dogcat{
-    width: 15rem;
-    height: 9rem;
+    .img-dogcat{
+        width: 15rem;
+        height: 9rem;
+    }
+    #container-png{
+        display: flex !important;
+        width: 100%;
+        justify-content: center !important;
+        justify-content: space-around !important;
+        margin-left: 0rem;
+    }
+
+    form {
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .form2 {
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+        /*details*/
+
+    .main-details{
+        background-color: #e6e6e6;
+    }
+
+    #details-div {
+        margin-top: 5rem;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #details-div .details-card {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80% !important;
+        height: auto;
+        font-size: 1.5rem;
+        justify-content: center;
+        gap: 0rem;
+        color: black;
+    }
+
+    .details-card img{
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        height: 30rem;
+        width: 30rem;
+    }
+
+    .details-title{
+        flex-wrap: wrap;
+        font-size: 2.5rem;
+    }
+
+    .details-body h6{
+        flex-wrap: wrap;
+        font-size: 1.3rem;
+    }
+
+    .details-pricediv{
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .details-price{
+        flex-wrap: wrap;
+        font-size: 2rem;
+    }
+
+    .details-cart{
+        flex-wrap: wrap;
+        color: blue;
+    }
+
+    .h2-description{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .details-text{
+        width: 80%;
+        font-size: 1.5rem;
+        display: flex;
+        text-align: center;
+        color: black;
+    }
 }
-#container-png{
-    display: flex !important;
-    width: 100%;
-    justify-content: center !important;
-    justify-content: space-around !important;
-    margin-left: 0rem;
-}
-  }

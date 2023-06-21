@@ -77,6 +77,7 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
     
       const realizarCompraButton = document.createElement("button");
       realizarCompraButton.textContent = "Confirmar Pago";
+      realizarCompraButton.classList.add("btn", "btn-primary", "btn-compra");
       shoppingCart.appendChild(realizarCompraButton);
     
       const customerForm = document.createElement("form");
@@ -85,10 +86,15 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
         <input type="text" name="nombre" placeholder="Nombre" required>
         <input type="text" name="apellido" placeholder="Apellido" required>
         <input type="text" name="direccion" placeholder="Dirección" required>
-        <input type="text" name="formaPago" placeholder="Forma de Pago" required>
+        <select name="formaPago" required>
+          <option value="" disabled selected>Seleccionar forma de pago</option>
+          <option value="tarjeta">Tarjeta de crédito</option>
+          <option value="transferencia">Transferencia bancaria</option>
+          <option value="efectivo">Efectivo</option>
+        </select>
       `;
       shoppingCart.insertBefore(customerForm, realizarCompraButton);
-    };
+    }
 
     document.getElementById("shopping-cart").addEventListener("click", removeFromCart);
     document.getElementById("shopping-cart").addEventListener("click", increaseQuantity);
